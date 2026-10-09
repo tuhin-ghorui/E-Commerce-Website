@@ -4,6 +4,8 @@
   "description": "MERN Stack E-Commerce Web Application",
   "main": "backend/src/server.js",
   "scripts": {
+    "start": "cd backend && npm start",
+    "build": "cd backend && npm install",
     "install-all": "npm install && cd backend && npm install && cd ../frontend && npm install",
     "backend": "cd backend && npm run dev",
     "frontend": "cd frontend && npm run dev",

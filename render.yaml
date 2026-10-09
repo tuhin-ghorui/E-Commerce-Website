@@ -1,0 +1,29 @@
+# Render Blueprint for ASTRA E-Commerce Backend
+# This file configures the backend web service on Render
+
+services:
+  - type: web
+    name: astra-ecommerce-backend
+    runtime: node
+    rootDir: backend
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: MONGO_URI
+        sync: false  # Set this manually in Render dashboard (MongoDB Atlas URI)
+      - key: JWT_SECRET
+        generateValue: true  # Render will generate a secure random value
+      - key: FRONTEND_URL
+        sync: false  # Set this to your Vercel frontend URL (e.g., https://your-app.vercel.app)
+    # Optional: Auto-deploy on push to main
+    autoDeploy: true
+
+# Note: You'll need to add a MongoDB database separately
+# Option 1: Use MongoDB Atlas (recommended) - create a cluster at mongodb.com/atlas
+# Option 2: Use Render's managed MongoDB (paid plans only)
